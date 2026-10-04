@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sizes: auto with Lazy Loading - Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 0; 
+      padding: 20px; 
+      background: #f9f9f9;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .demo-section {
+      background: white;
+      margin-bottom: 30px;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .demo-section h2 {
+      color: #333;
+      margin-top: 0;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
+    .demo-content {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .demo-image-wrapper {
+      flex: 1;
+      min-width: 300px;
+    }
+    .demo-info {
+      flex: 1;
+      min-width: 300px;
+      background: #f5f7fa;
+      padding: 15px;
+      border-radius: 6px;
+      border-left: 4px solid #667eea;
+    }
+    .demo-info h4 {
+      margin-top: 0;
+      color: #333;
+    }
+    .info-row {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .info-label {
+      font-weight: bold;
+      color: #666;
+      display: inline-block;
+      width: 100px;
+    }
+    .info-value {
+      color: #333;
+      font-family: 'Courier New', monospace;
+      background: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .status-loading {
+      color: #ff9800;
+      font-weight: bold;
+    }
+    .status-loaded {
+      color: #4caf50;
+      font-weight: bold;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      border: 2px solid #ddd;
+    }
+    .full-width { width: 100%; }
+    .code-block {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 13px;
+      font-family: 'Courier New', monospace;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      line-height: 1.4;
+    }
+    .tip {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 12px;
+      border-radius: 4px;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+    @media (max-width: 768px) {
+      .demo-content { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📸 sizes: auto with Lazy Loading - Live Demo</h1>
+  <p>Resize your browser to see the difference!</p>
+</div>
+
+<!-- ==========================================
+     DEMO 1: OLD WAY - MANUAL SIZES
+     ========================================== -->
+<div class="demo-section">
+  <h2>❌ OLD WAY: Manual Sizes with Media Queries</h2>
+  
+  <div class="code-block">
+&lt;img 
+  srcset="banner-400.jpg 400w,
+          banner-800.jpg 800w,
+          banner-1200.jpg 1200w"
+  sizes="(max-width: 600px) 100vw,
+         (max-width: 1024px) 50vw,
+         1200px"
+  src="banner-800.jpg"
+  alt="Banner"
+  loading="lazy"
+/&gt;
+  </div>
+
+  <div class="demo-content">
+    <div class="demo-image-wrapper">
+      <img 
+        id="old-img"
+        srcset="https://loremflickr.com/400/300/coffee 400w,
+                https://loremflickr.com/800/300/coffee 800w,
+                https://loremflickr.com/1200/300/coffee 1200w"
+        sizes="(max-width: 600px) 100vw,
+               (max-width: 1024px) 50vw,
+               1200px"
+        src="https://loremflickr.com/800/300/coffee"
+        alt="Old way - manual sizes"
+        loading="lazy"
+        class="full-width"
+      />
+    </div>
+    <div class="demo-info">
+      <h4>📊 Image Details</h4>
+      <div class="tip">
+        <strong>Problems with this approach:</strong>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li>Had to manually calculate breakpoints</li>
+          <li>If CSS layout changes, sizes become wrong</li>
+          <li>Complex to maintain</li>
+          <li>Easy to make mistakes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================
+     DEMO 2: NEW WAY - sizes: auto
+     ========================================== -->
+<div class="demo-section">
+  <h2>✅ NEW WAY: sizes: auto (Automatic)</h2>
+  
+  <div class="code-block">
+&lt;img 
+  srcset="banner-400.jpg 400w,
+          banner-800.jpg 800w,
+          banner-1200.jpg 1200w"
+  sizes="auto"
+  src="banner-800.jpg"
+  alt="Banner"
+  loading="lazy"
+/&gt;
+  </div>
+
+  <div class="demo-content">
+    <div class="demo-image-wrapper">
+      <img 
+        id="new-img"
+        srcset="https://via.placeholder.com/400x300/4CAF50/FFFFFF?text=400w 400w,
+                https://via.placeholder.com/800x300/4CAF50/FFFFFF?text=800w 800w,
+                https://via.placeholder.com/1200x300/4CAF50/FFFFFF?text=1200w 1200w"
+        sizes="auto"
+        src="https://via.placeholder.com/800x300/4CAF50/FFFFFF?text=800w"
+        alt="New way - sizes auto"
+        loading="lazy"
+        class="full-width"
+      />
+    </div>
+    <div class="demo-info">
+      <h4>📊 Image Details</h4>
+      <div class="tip">
+        <strong>Benefits of sizes: auto:</strong>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li>✅ Browser automatically detects rendered size</li>
+          <li>✅ Adapts instantly when window resizes</li>
+          <li>✅ Works with any CSS layout</li>
+          <li>✅ Simple & maintenance-free</li>
+          <li>✅ Always picks the optimal image</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
