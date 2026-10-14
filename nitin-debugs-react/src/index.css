@@ -1,13 +1,13 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  --text: #c9d1d9;
+  --text-h: #f0f6fc;
+  --bg: #0d1117;
+  --border: #30363d;
+  --code-bg: #161b22;
+  --accent: #bc8cff;
+  --accent-bg: rgba(188, 140, 255, 0.12);
+  --accent-border: rgba(188, 140, 255, 0.55);
+  --social-bg: rgba(22, 27, 34, 0.8);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -17,7 +17,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -29,8 +29,6 @@
     font-size: 16px;
   }
 }
-
-/* Dark mode removed — site will use the light theme variables defined above */
 
 #root {
   width: 1126px;
