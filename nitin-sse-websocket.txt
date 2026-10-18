@@ -1,0 +1,11 @@
+
+// Nitin Debugs
+
+WHATSAPP.   ----> WEBSOCKET
+
+ZERODHA STOCK EXCHANGE.   ----> SSE
+
+CHATGPT CHAT.  ---> FETCH Streaming
+
+
+WEBSOCKET    VS    SSE    VS    FETCH Streaming
